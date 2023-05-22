@@ -1,0 +1,7 @@
+rules:
+  - id: wrong_overload
+    pattern: $CLASS.SendTransaction($VAR1, $VAR2, $VAR3)
+    message: Semgrep found a match
+    languages:
+      - python
+    severity: WARNING
