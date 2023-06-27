@@ -1,14 +1,14 @@
 # Name of this GitHub Actions workflow.
-name: Semgrep
+name: Semgrep Python
 
 on:
   # Scan changed files in PRs (diff-aware scanning):
-  pull_request: {}
+  #pull_request: {}
   # Scan on-demand through GitHub Actions interface:
   workflow_dispatch: {}
   # Scan mainline branches and report all findings: 
-  push:
-    branches: ["master", "main"]
+  #push:
+  #  branches: ["master", "main"]
   # Schedule the CI job (this method uses cron syntax):
   #schedule:
   #  - cron: '20 13 * * *' # Sets Semgrep to scan every day at 17:20 UTC.
@@ -35,7 +35,7 @@ jobs:
       - run: semgrep ci --sarif --output=semgrep.sarif
         env:
            # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable. 
-           SEMGREP_RULES: semgrep_rules/wrong_overload.yml # more at semgrep.dev/explore
+           SEMGREP_RULES: semgrep_rules/py_wrong_overload.yml # more at semgrep.dev/explore
 
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
         uses: github/codeql-action/upload-sarif@v2
