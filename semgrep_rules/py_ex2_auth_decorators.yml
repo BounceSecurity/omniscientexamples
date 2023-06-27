@@ -13,7 +13,7 @@ rules:
       - pattern-inside: |
           from functools import wraps
           ...
-    message: Function "$FUNC" is missing the authorization decorator
+    message: Function is missing the authorization decorator
     languages:
       - python
     severity: WARNING
