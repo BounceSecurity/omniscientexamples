@@ -12,9 +12,10 @@ class Permissions(Enum):
 
 permissions = [Permissions.READ, Permissions.UPDATE]
 
-def require_update_purrrmission(func): # nosemgrep: py_ex2_auth_decorators
+ # nosemgrep
+def require_update_purrrmission(func):
     @wraps(func)
-    # nosemgrep: py_ex2_auth_decorators
+    # nosemgrep
     def wrapper(*args, **kwargs):
         if not Permissions.UPDATE in permissions:
             raise ValueError("Permission denied")
@@ -27,12 +28,6 @@ def update_score_board(cat1, cat2, game_result: GameResult):
     # Update score board
 
 def next_move_cat(cat, move):
-    print("{0} plays the next move which is {1}".format(cat, move))
-    play_move(cat, move)
-    # Update game notes
-    
-
-def next_move_cat(cat, move):  # nosemgrep: py_ex2_auth_decorators
     print("{0} plays the next move which is {1}".format(cat, move))
     play_move(cat, move)
     # Update game notes
