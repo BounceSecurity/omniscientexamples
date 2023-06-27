@@ -12,7 +12,7 @@ class Permissions(Enum):
 
 permissions = [Permissions.READ, Permissions.UPDATE]
 
-def require_update_purrrmission(func): # nosemgrep: semgrep_rules.py_ex2_auth_decorators
+def require_update_purrrmission(func): # nosemgrep: py_ex2_auth_decorators
     @wraps(func)
     # nosemgrep: py_ex2_auth_decorators
     def wrapper(*args, **kwargs):
