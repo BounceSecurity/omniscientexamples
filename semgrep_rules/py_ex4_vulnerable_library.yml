@@ -1,0 +1,11 @@
+rules:
+  - id: py_ex4_vulnerable_library
+    mode: taint
+    pattern-sources:
+      - pattern: py7zr.$FUNC(...)
+    pattern-sinks:
+      - pattern: $O.extractall(...)
+    message: Semgrep found a match
+    languages:
+      - python
+    severity: ERROR

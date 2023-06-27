@@ -41,7 +41,7 @@ jobs:
             semgrep_rules/py_ex1_wrong_overload.yml
             semgrep_rules/py_ex2_auth_decorators.yml
             semgrep_rules/py_ex3_unsanitized_input.yml
-
+            semgrep_rules/py_ex4_vulnerable_library.yml
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
         uses: github/codeql-action/upload-sarif@v2
         with:
