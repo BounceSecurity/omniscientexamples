@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: semgrep install-semgrep-pro
       # Run semgrep on the command line of the docker image.
-      - run: semgrep --pro --no-rewrite-rule-ids --sarif --output=semgrep.sarif
+      - run: semgrep --pro --error --no-rewrite-rule-ids --sarif --output=semgrep.sarif
         env:
            # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.  More at semgrep.dev/explore
            SEMGREP_RULES: >
