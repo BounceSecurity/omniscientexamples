@@ -7,8 +7,8 @@ on:
   # Scan on-demand through GitHub Actions interface:
   workflow_dispatch: {}
   # Scan mainline branches and report all findings: 
-  #push:
-  #  branches: ["master", "main"]
+  push:
+    branches: ["master", "main"]
   # Schedule the CI job (this method uses cron syntax):
   #schedule:
   #  - cron: '20 13 * * *' # Sets Semgrep to scan every day at 17:20 UTC.
@@ -32,13 +32,12 @@ jobs:
       # Fetch project source with GitHub Actions Checkout.
       - uses: actions/checkout@v3
       # Run the "semgrep ci" command on the command line of the docker image.
-      - run: semgrep ci --sarif --output=../semgrep.sarif
-        working-directory: ./code
+      - run: semgrep ci --sarif --output=semgrep.sarif
         env:
            # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.  More at semgrep.dev/explore
            SEMGREP_RULES: >
-            ../semgrep_rules/py_ex1_wrong_overload.yml 
-            ../semgrep_rules/py_ex2_security_decorators-update.yml 
+            semgrep_rules/py_ex1_wrong_overload.yml 
+            semgrep_rules/py_ex2_security_decorators-update.yml 
 
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
         uses: github/codeql-action/upload-sarif@v2
