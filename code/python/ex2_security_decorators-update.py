@@ -22,8 +22,6 @@ def require_update_purrrmission(func):
         return func(*args, **kwargs)
     return wrapper
 
-# ------------- Different code file
-
 @require_update_purrrmission
 def update_score_board(cat1, cat2, game_result: GameResult):
     print("Winner is {0}".format(cat1))
