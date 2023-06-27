@@ -1,5 +1,5 @@
 rules:
-  - id: ex2_security_decorators-update
+  - id: py_ex2_auth_decorators
     patterns:
       - pattern: |
           def $FUNC(...):

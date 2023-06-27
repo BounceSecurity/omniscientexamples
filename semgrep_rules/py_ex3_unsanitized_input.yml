@@ -1,0 +1,13 @@
+rules:
+  - id: py_ex3_unsanitized_input
+    mode: taint
+    pattern-sources:
+      - pattern: input(...)
+    pattern-sinks:
+      - pattern: run_ping(...)
+    pattern-sanitizers:
+      - pattern: sanitize_it(...)
+    message: Semgrep found a match
+    languages:
+      - python
+    severity: WARNING
