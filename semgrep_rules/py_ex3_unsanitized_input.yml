@@ -7,7 +7,7 @@ rules:
       - pattern: run_ping(...)
     pattern-sanitizers:
       - pattern: sanitize_it(...)
-    message: Semgrep found a match
+    message: run_ping is being used without first sanitizing
     languages:
       - python
     severity: WARNING
