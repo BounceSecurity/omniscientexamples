@@ -1,43 +1,59 @@
 
+# OLD VERSION OF CLASS STARTS ---------------------------------
+
 class CallService:
-    
-    def SendTransactionOld(self, account, value, msg):
-        print("Sent to '" + account + "'")
-        
-    def SendTransaction(self, account, value, msg, checksum = None):
-        
-        if (checksum == None):
-            self.SendTransactionOld(account, value, msg)
+    def send_transaction(self, cat, value, msg):
+        # Do transaction sending stuff
+        print("Sent to '" + cat + "'")
+
+# OLD VERSION OF CLASS ENDS ---------------------------------
+
+# NEW VERSION OF CLASS STARTS ---------------------------------
+
+class CallService:
+    def send_transaction_old(self, cat, value, msg):
+        # Do transaction sending stuff
+        print("Sent to '" + cat + "'")
+
+    def send_transaction(self, cat, value, msg, checksum=None):
+        if checksum == None:
+            self.send_transaction_old(cat, value, msg)
         else:
-            print("Sent to '" + account + "', but safely!")
-        
+            # Do transaction sending stuff but this time
+            # with a checksum
+            print("Sent to '" + cat + "', but safely!")
+
+# NEW VERSION OF CLASS ENDS ---------------------------------
 
 def main():
-    
-    clientCall = CallService()
-    clientCall.Name = "HacmeBank"
-    
-    accountNum = "12146123"
+
+    CatRequest = CallService()
+    CatRequest.name = "HacmeBank"
+
+    cat_num = "12146123"
     msg = "Invoice 24234"
-    someChecksum = "D97EA6CA"
-    
-    # ruleid: wrong_overload
-    clientCall.SendTransaction(accountNum, 4489, "Invoice 78896")
+    some_checksum = "D97EA6CA"
 
     # ruleid: wrong_overload
-    clientCall.SendTransaction("12146123", 4489, msg)
-    
+    CatRequest.send_transaction(cat_num, 4489, msg)
+
+    # ruleid: ok
+    CatRequest.send_transaction(cat_num, 4489, msg, some_checksum)
+
     # ruleid: wrong_overload
-    clientCall.SendTransaction(accountNum, 4342, msg)
+    CatRequest.send_transaction("12146123", 4489, msg)
+
+    # ruleid: wrong_overload
+    CatRequest.send_transaction(accountNum, 4342, msg)
 
     # ruleid: ok
-    clientCall.SendTransaction(accountNum, 4489, "Invoice 78896", someChecksum)
+    CatRequest.send_transaction(accountNum, 4489, "Invoice 78896", someChecksum)
 
     # ruleid: ok
-    clientCall.SendTransaction("12146123", 4489, msg, "ABCD4123")
+    CatRequest.send_transaction("12146123", 4489, msg, "ABCD4123")
 
     # ruleid: ok
-    clientCall.SendTransaction(accountNum, 4342, msg, "DEFA3456")
+    CatRequest.send_transaction(accountNum, 4342, msg, "DEFA3456")
 
 
 main()
