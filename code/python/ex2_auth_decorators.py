@@ -12,24 +12,26 @@ class Permissions(Enum):
 
 permissions = [Permissions.READ, Permissions.UPDATE]
 
-def require_update_purrrmission(func):  # nosemgrep
+def require_update_purrrmission(func):
     @wraps(func)
     
-    def wrapper(*args, **kwargs): # nosemgrep
+    def wrapper(*args, **kwargs):
         if not Permissions.UPDATE in permissions:
             raise ValueError("Permission denied")
         return func(*args, **kwargs)
     return wrapper
 
-@require_update_purrrmission
-def update_score_board(cat1, cat2, game_result: GameResult):
-    print("Winner is {0}".format(cat1))
-    # Update score board
+class SensitiveFunctions:
 
-def next_move_cat(cat, move):
-    print("{0} plays the next move which is {1}".format(cat, move))
-    play_move(cat, move)
-    # Update game notes
+    @require_update_purrrmission
+    def update_score_board(cat1, cat2, game_result: GameResult):
+        print("Winner is {0}".format(cat1))
+        # Update score board
 
-next_move_cat("tabby", "Qxh6")
-update_score_board("tabby", "simba", GameResult.CAT1_WON)
+    def next_move_cat(cat, move):
+        print("{0} plays the next move which is {1}".format(cat, move))
+        play_move(cat, move)
+        # Update game notes
+
+SensitiveFunctions.next_move_cat("tabby", "Qxh6")
+SensitiveFunctions.update_score_board("tabby", "simba", GameResult.CAT1_WON)

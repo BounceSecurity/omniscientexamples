@@ -1,5 +1,5 @@
 rules:
-  - id: py_ex2_auth_decorators
+  - id: ex2_security_decorators-update
     patterns:
       - pattern: |
           def $FUNC(...):
@@ -11,9 +11,9 @@ rules:
           def $FUNC(...):
             ...
       - pattern-inside: |
-          from functools import wraps
-          ...
-    message: Function is missing the authorization decorator
+          class SensitiveFunctions:
+            ...
+    message: Function "$FUNC" is missing the authorization decorator
     languages:
       - python
     severity: WARNING
