@@ -1,7 +1,7 @@
 rules:
   - id: py_ex1_wrong_overload
     pattern: $CLASS.send_transaction($PARAM1, $PARAM2, $PARAM3)
-    message: Semgrep found a match
+    message: The wrong overload of send_transaction has been used on this line.
     languages:
       - python
     severity: WARNING

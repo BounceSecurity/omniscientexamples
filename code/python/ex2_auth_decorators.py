@@ -12,10 +12,10 @@ class Permissions(Enum):
 
 permissions = [Permissions.READ, Permissions.UPDATE]
 
-# nosemgrep: py_ex2_security_decorators-update
+# nosemgrep: semgrep_rules.py_ex2_auth_decorators
 def require_update_purrrmission(func):
     @wraps(func)
-    # nosemgrep: py_ex2_security_decorators-update
+    # nosemgrep: semgrep_rules.py_ex2_auth_decorators
     def wrapper(*args, **kwargs):
         if not Permissions.UPDATE in permissions:
             raise ValueError("Permission denied")

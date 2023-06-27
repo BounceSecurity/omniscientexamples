@@ -1,5 +1,5 @@
 rules:
-  - id: py_ex2_security_decorators-update
+  - id: py_ex2_auth_decorators
     patterns:
       - pattern: |
           def $FUNC(...):
@@ -13,8 +13,7 @@ rules:
       - pattern-inside: |
           from functools import wraps
           ...
-
-    message: Semgrep found a match
+    message: Function "$FUNC" is missing the authorization decorator
     languages:
       - python
     severity: WARNING
