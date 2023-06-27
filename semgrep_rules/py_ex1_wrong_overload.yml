@@ -4,4 +4,4 @@ rules:
     message: The wrong overload of send_transaction has been used on this line.
     languages:
       - python
-    severity: WARNING
+    severity: ERROR

@@ -10,4 +10,4 @@ rules:
     message: run_ping is being used without first sanitizing
     languages:
       - python
-    severity: WARNING
+    severity: ERROR

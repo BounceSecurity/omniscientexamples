@@ -16,4 +16,4 @@ rules:
     message: Function is missing the authorization decorator
     languages:
       - python
-    severity: WARNING
+    severity: ERROR
