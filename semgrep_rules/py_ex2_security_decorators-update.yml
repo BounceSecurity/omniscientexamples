@@ -1,0 +1,16 @@
+rules:
+  - id: py_ex2_security_decorators-update
+    patterns:
+      - pattern: |
+          def $FUNC(...):
+            ...
+      - focus-metavariable:
+          - $FUNC
+      - pattern-not-inside: |
+          @require_update_purrrmission
+          def $FUNC(...):
+            ...
+    message: Semgrep found a match
+    languages:
+      - python
+    severity: WARNING
