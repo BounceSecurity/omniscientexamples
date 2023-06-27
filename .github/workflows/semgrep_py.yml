@@ -20,7 +20,8 @@ jobs:
     name: semgrep/ci
     # If you are self-hosting, change the following `runs-on` value: 
     runs-on: ubuntu-latest
-
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_TOKEN }}
     container:
       # A Docker image with Semgrep installed. Do not change this.
       image: returntocorp/semgrep
