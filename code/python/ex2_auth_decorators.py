@@ -12,11 +12,10 @@ class Permissions(Enum):
 
 permissions = [Permissions.READ, Permissions.UPDATE]
 
- # nosemgrep
-def require_update_purrrmission(func):
+def require_update_purrrmission(func):  # nosemgrep
     @wraps(func)
-    # nosemgrep
-    def wrapper(*args, **kwargs):
+    
+    def wrapper(*args, **kwargs): # nosemgrep
         if not Permissions.UPDATE in permissions:
             raise ValueError("Permission denied")
         return func(*args, **kwargs)
