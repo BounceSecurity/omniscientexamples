@@ -36,8 +36,8 @@ jobs:
         env:
            # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.  More at semgrep.dev/explore
            SEMGREP_RULES: >
-            semgrep_rules/py_ex1_wrong_overload.yml 
-            semgrep_rules/py_ex2_security_decorators-update.yml 
+            semgrep_rules/py_ex1_wrong_overload.yml
+            semgrep_rules/py_ex2_auth_decorators.yml
 
       - name: Upload SARIF file for GitHub Advanced Security Dashboard
         uses: github/codeql-action/upload-sarif@v2
