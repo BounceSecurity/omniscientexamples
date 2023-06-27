@@ -1,6 +1,6 @@
 rules:
   - id: py_ex1_wrong_overload
-    pattern: $CLASS.SendTransaction($VAR1, $VAR2, $VAR3)
+    pattern: $CLASS.send_transaction($PARAM1, $PARAM2, $PARAM3)
     message: Semgrep found a match
     languages:
       - python
