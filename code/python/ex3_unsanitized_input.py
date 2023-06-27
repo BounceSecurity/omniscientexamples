@@ -9,7 +9,7 @@ def get_input():
     return input("please enter address")
 
 def run_ping(address):
-    cmd = "ping -c 1 %s" % address
+    cmd = "ping -c 1 {0}".format(address)
     subprocess.Popen(cmd, shell=True)
 
 new_address = get_input()
