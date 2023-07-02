@@ -1,0 +1,44 @@
+# Name of this GitHub Actions workflow.
+name: Semgrep Python Plain
+
+on:
+  # Scan changed files in PRs (diff-aware scanning):
+  #pull_request: {}
+  # Scan on-demand through GitHub Actions interface:
+  workflow_dispatch: {}
+  # Scan mainline branches and report all findings: 
+  push:
+    branches: ["master", "main"]
+  # Schedule the CI job (this method uses cron syntax):
+  #schedule:
+  #  - cron: '20 13 * * *' # Sets Semgrep to scan every day at 17:20 UTC.
+  #  # It is recommended to change the schedule to a random time.
+
+jobs:
+  semgrep:
+    # User-definable name of this GitHub Actions job:
+    name: semgrep/ci
+    # If you are self-hosting, change the following `runs-on` value: 
+    runs-on: ubuntu-latest
+    env:
+      SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_TOKEN }}
+    container:
+      # A Docker image with Semgrep installed. Do not change this.
+      image: returntocorp/semgrep
+
+    # Skip any PR created by dependabot to avoid permission issues:
+    if: (github.actor != 'dependabot[bot]')
+
+    steps:
+      # Fetch project source with GitHub Actions Checkout.
+      - uses: actions/checkout@v3
+      - run: semgrep install-semgrep-pro
+      # Run semgrep on the command line of the docker image.
+      - run: semgrep --pro --error --no-rewrite-rule-ids
+        env:
+           # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable.  More at semgrep.dev/explore
+           SEMGREP_RULES: >
+            semgrep_rules/py_ex1_wrong_overload.yml
+            semgrep_rules/py_ex2_auth_decorators.yml
+            semgrep_rules/py_ex3_unsanitized_input.yml
+            semgrep_rules/py_ex4_vulnerable_library.yml

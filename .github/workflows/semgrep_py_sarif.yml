@@ -1,5 +1,5 @@
 # Name of this GitHub Actions workflow.
-name: Semgrep Python
+name: Semgrep Python Sarif
 
 on:
   # Scan changed files in PRs (diff-aware scanning):
