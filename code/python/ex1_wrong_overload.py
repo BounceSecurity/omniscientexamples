@@ -4,7 +4,7 @@
 class CallService:
     def send_transaction(self, cat, value, msg):
         # Do transaction sending stuff
-        print("Sent to '" + cat + "'")
+        print("Sent to '{0}'".format(cat))
 
 # OLD VERSION OF CLASS ENDS ---------------------------------
 
