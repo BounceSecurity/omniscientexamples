@@ -4,12 +4,12 @@ This repo shows how semgrep rules can be run as part of a CI process over a numb
 
 ### Code Examples
 
-Code examples are in the [code](code/) folder.
+Code examples are in the "**[code/python](code/python/)**" folder.
 
 ### Semgrep Rules
 
-Semgrep rule examples are in the [semgrep_rules](semgrep_rules/) folder.
+Semgrep rule examples are in the "**[semgrep_rules](semgrep_rules/)**" folder.
 
 ### Github Actions
 
-The Github Actions are in the [.github/workflows](.github/workflows/) folder.
+The Github Actions are in the "**[.github/workflows](.github/workflows/)**" folder.
